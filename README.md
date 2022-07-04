@@ -23,7 +23,7 @@ Django Security Personnel Face Mask Checker System
 #
 @sawardekar - https://github.com/sawardekar/Django_VideoStream
 #
-https://bit.ly/sourcecodester_cams
+@sourcecodester - https://bit.ly/sourcecodester_cams
 #
 
 Kindly install the needed python libraries found in requirements.txt. (^^)

@@ -1,0 +1,46 @@
+<style>
+    #uni_modal .modal-footer {
+        display: none
+    }
+    
+    #faculty-avatar {
+        width: 100%;
+        max-height: 20vh;
+        object-fit: scale-down;
+        object-position: center center;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <img id="faculty-avatar" class="bg-gradient bg-dark img-thumbnail img-fluid" src="{% if faculty.avatar %}{{ faculty.avatar.url }}{% else %}{{ MEDIA_URL }}default/default-avatar.png{% endif %}" alt="">
+        </div>
+        <div class="col-md-8">
+            <dl>
+                <dt class="text-muted">Fullname:</dt>
+                <dd class="ps-3">{{ faculty.user.first_name }} {{ faculty.user.last_name }}</dd>
+                <dt class="text-muted">Gender:</dt>
+                <dd class="ps-3">{{ faculty.gender }}</dd>
+                <dt class="text-muted">Birthday:</dt>
+                <dd class="ps-3">{{ faculty.dob|date:"F d, Y" }}</dd>
+                <dt class="text-muted">Contact:</dt>
+                <dd class="ps-3">{{ faculty.contact }}</dd>
+                <dt class="text-muted">Cam:</dt>
+                <dd class="ps-3">{{ faculty.cam }}</dd>
+                <dt class="text-muted">User_Type:</dt>
+                <dd class="ps-3">{{ faculty.users_types }}</dd>
+                <dt class="text-muted">Assigned_Place:</dt>
+                <dd class="ps-3">{{ faculty.Assigned_places }}</dd>
+                <dt class="text-muted">Email:</dt>
+                <dd class="ps-3">{{ faculty.user.email }}</dd>
+                <dt class="text-muted">Address:</dt>
+                <dd class="ps-3">{{ faculty.address }}</dd>
+                <dt class="text-muted">Username:</dt>
+                <dd class="ps-3">{{ faculty.user.username }}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="w-100 d-flex justify-content-end mt-3">
+        <button class="btn btn-default border btn-sm" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+{% extends 'base.html' %} {% block pageContent %}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card card-default rounded-0 shadow ">
+        <div class="card-header">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+                <h4 class="card-title fw-bold">Admin Security Personnel Surveillance Account Management</h4>
+                <div class="tools">
+                    <button type="button" class="btn btn-primary rounded-0 bg-gradient btn-sm" id='add_new'><i class="fa fa-plus"></i> Add New</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                <table class="table table-bordered" id="faculty-list">
+                    <colgroup>
+                        <col width="5%">
+                        <col width="25%">
+                        <col width="25%">
+                        <col width="25%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                        <tr class="bg-gradient bg-primary bg-opacity-50 text-light">
+                            <th class="px-2 py-2 text-center">#</th>
+                            <th class="px-2 py-2 text-center">Username</th>
+                            <th class="px-2 py-2 text-center">Name</th>
+                            <th class="px-2 py-2 text-center">Email</th>
+                            <th class="px-2 py-2 text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for faculty in faculties %}
+                        <tr>
+                            <td class="px-2 py-1 align-middle">{{ faculty.id }}</td>
+                            <td class="px-2 py-1 align-middle">{{ faculty.user.username }}</td>
+                            <td class="px-2 py-1 align-middle">{{ faculty.user.first_name }} {{ faculty.user.last_name }}</td>
+                            <td class="px-2 py-1 align-middle">{{ faculty.user.email }}</td>
+                            <td class="px-2 py-1 align-middle text-center">
+                                <a class="btn btn-outline-info btn-sm view-data" href="javascript:void(0)" data-url="{% url 'view-faculty-modal' faculty.pk %}" title="View Details">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-outline-primary btn-sm edit-data" href="javascript:void(0)" data-id="{{ faculty.user.pk }}" title="Edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <button class="btn btn-outline-danger btn-sm delete-data" type="button" data-id="{{ faculty.user.pk }}" title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock pageContent %} {% block ScriptBlock %}
+<script>
+    $(function() {
+        $('#add_new').click(function() {
+            uni_modal('<i class="fa fa-plus"></i> Add Admin', '{% url "manage-faculty-modal" %}', 'modal-lg')
+        })
+        $('.view-data').click(function() {
+            uni_modal('<i class="fa fa-eye"></i> Admin Details', $(this).attr('data-url'))
+        })
+        $('.edit-data').click(function() {
+            uni_modal('<i class="fa fa-edit"></i> Edit Admin', '{% url "manage-faculty-modal" %}/' + $(this).attr('data-id'), 'modal-lg')
+        })
+        $('.delete-data').click(function() {
+            _conf("Are you sure to delete this Admin Security Personnel permanently?", "delete_faculty", [$(this).attr('data-id')])
+        })
+
+        $('#faculty-list').DataTable({
+            columnDefs: [{
+                orderable: false,
+                targets: 4
+            }],
+            initComplete: function(settings, json) {
+                $('table td, table th').addClass('px-2 py-1')
+            },
+            drawCallback: function(settings) {
+                $('table td, table th').addClass('px-2 py-1')
+            }
+        })
+    })
+
+    function delete_faculty($id) {
+        start_loader();
+        var _this = $(this)
+        $('.err-msg').remove();
+        var el = $('<div>')
+        el.addClass("alert alert-danger err-msg")
+        el.hide()
+        $.ajax({
+            url: '{% url "delete-faculty" %}',
+            headers: {
+                'X-CSRFToken': "{{csrf_token}}"
+            },
+            method: 'POST',
+            data: {
+                id: $id
+            },
+            dataType: 'json',
+            error: err => {
+                console.log(err)
+                el.text('An error occurred.')
+                el.show('slow')
+                end_loader()
+            },
+            success: function(resp) {
+                if (resp.status == 'success') {
+                    location.reload()
+                } else if (!!resp.msg) {
+                    el.text('An error occurred.')
+                    el.show('slow')
+                } else {
+                    el.text('An error occurred.')
+                    el.show('slow')
+                }
+                end_loader()
+            }
+        })
+    }
+</script>
+{% endblock ScriptBlock %}

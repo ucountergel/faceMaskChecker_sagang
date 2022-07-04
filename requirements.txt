@@ -1,0 +1,7 @@
+Django==4.0.3
+Pillow
+aiohttp~=3.8.1
+opencv-python~=4.5.5.64
+imutils~=0.5.3
+numpy~=1.19.5
+tensorflow~=2.6.3

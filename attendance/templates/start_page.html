@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>FACE MASK CHECKER SYSTEM</title>
+      <link rel="stylesheet" href="{% static "dist/css/es.css" %}">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <!-- System welcome message -->
+   <script>
+        function speak() {
+         const utterance = new SpeechSynthesisUtterance('Welcome to Sagang Face Mask Checker System!, Login as a Super Admin or an Admin Security Personnel here.')
+         window.speechSynthesis.speak(utterance)
+        }
+        speak();
+    </script>
+
+
+</head>
+
+<body style="background-image:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('{% static 'dist/img/imgs.jpg' %}');>
+<div class="banner'
+    <div class="navbar">
+        <img src="{% static "dist/img/img_1.png" %}"  class="img-circle elevation-1" alt="User Image" style="width:100px; height:100px; class="logo";">
+
+    </div>
+<div class="content">
+    <hl>FACE MASK CHECKER SYSTEM</hl>
+    <p> LOG IN AS </p>
+
+<div>
+    <button type="button"><span></span><a href="{% url 'superadmin' %}">SUPER ADMIN</a></button>
+    <button type="button"><span></span><a href="{% url 'admin1' %}">ADMIN</a></button>
+</div>
+</div>
+<div class="row">
+          {% if messages %}
+         <div class="col-12">
+            {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+
+
+
+
+      <!-- /.social-auth-links -->
+
+<!-- /.login-box -->
+<div id="particles-js"></div>
+<!-- jQuery -->
+<script src="{% static "dist/js/particles.min.js" %}"> </script>
+<script src="{% static "dist/js/app.js" %}"> </script>
+</body>
+</html>

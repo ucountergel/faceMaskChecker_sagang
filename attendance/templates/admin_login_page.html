@@ -1,0 +1,126 @@
+{% load static %}{% block pageContent %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADMIN</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static "dist/css/tailwinds.css" %}" />
+  </head>
+  <body>
+
+
+    <img
+      src="{% static "dist/img/wave.png"%}"
+      class="fixed hidden lg:block inset-0 h-full"
+      style="z-index: -1;"
+    />
+
+    <div
+      class="w-screen h-screen flex flex-col justify-center items-center lg:grid lg:grid-cols-2"
+    >
+      <img
+        src="{% static "dist/img/unlock.svg" %}"
+        class="hidden lg:block w-1/2 hover:scale-150 transition-all duration-500 transform mx-auto"
+      />
+       <form id="login-user">
+          {% csrf_token %}
+      <form class="flex flex-col justify-center items-center w-1/2">
+
+        <img src="{% static "dist/img/img_1.png" %}" class="w-32" />
+
+        <h2
+          class="my-8 font-display font-bold text-3xl text-gray-700 text-static"
+        >
+          Sign As ADMIN
+        </h2>
+
+        <div class="relative">
+          <i class="fa fa-user absolute text-primarycolor text-xl"></i>
+          <input
+            type="username"
+            placeholder="username"
+            name="username"
+            class="pl-8 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 capitalize text-lg"
+          />
+        </div>
+        <div class="relative mt-8">
+          <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="pl-8 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 capitalize text-lg"
+          />
+        </div>
+        <a href="{% url 'password_reset' %}" class="self-end mt-4 text-gray-600 font-bold"
+          >Forgot password?</a>
+
+         <button class="btn btn-sm rounded-0 btn-primary">
+                                                Login
+                                            </button>
+        </form>
+        </div>
+
+      </form>
+    </div>
+
+{% endblock pageContent %} {% block ScriptBlock %}
+<script>
+    $(function() {
+        $('#login-user').submit(function(e) {
+            e.preventDefault();
+            var _this = $(this)
+            $('.err-msg').remove();
+            var el = $('<div>')
+            el.addClass("alert alert-danger err-msg")
+            el.hide()
+            if (_this[0].checkValidity() == false) {
+                _this[0].reportValidity();
+                return false;
+            }
+            start_loader();
+            $.ajax({
+                headers: {
+                    "X-CSRFToken": '{{csrf_token}}'
+                },
+                url: "{% url 'login-user' %}",
+                data: new FormData($(this)[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST',
+                dataType: 'json',
+                error: err => {
+                    console.log(err)
+                    alert_toast("An error occured", 'error');
+                    end_loader();
+                },
+                success: function(resp) {
+                    if (typeof resp == 'object' && resp.status == 'success') {
+                        el.removeClass("alert alert-danger err-msg")
+                        location.href = "{% url 'home-page' %}"
+                    } else if (resp.status == 'failed' && !!resp.msg) {
+                        el.text(resp.msg)
+                    } else {
+                        el.text("An error occured", 'error');
+                        end_loader();
+                        console.err(resp)
+                    }
+                    _this.prepend(el)
+                    el.show('slow')
+                    $("html, body, .modal").scrollTop(0);
+                    end_loader()
+                }
+            })
+        })
+    })
+</script>
+{% endblock ScriptBlock %}
+
+  </body>
+</html>

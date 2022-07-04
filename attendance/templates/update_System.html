@@ -1,0 +1,53 @@
+{% extends 'base.html' %}{% load static %}{% block pageContent %}
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <div class="card card-default rounded-0 shadow">
+            <div class="card-header">
+                <h4 class="card-title"><b>Update System</b></h4>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <form id="register-user" method="POST" action="{% url 'update-profiles' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mdc-layout-grid">
+                            <div class="mdc-layout-grid__inner">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                         <div class="form-group mb-3">
+                                            <label for="SystemName" class="control-label">SystemName</label>
+                                            <textarea rows="3" class="form-control rounded-0" name="SystemName" id="SystemName" required="required">{{ userProfile.SystemName }}</textarea>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="gmail" class="control-label">Gmail</label>
+                                            <input type="text" class="form-control rounded-0" name="gmail" id="gmail" value="{{ userProfile.gmail }}">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                {% for field in form1 %} {% for error in field.errors %}
+                                <div class="alert alert-danger my-2">
+                                    <p>{{ error }}</p>
+                                </div>
+                                {% endfor %} {% endfor %} {% for field in form2 %} {% for error in field.errors %}
+                                <div class="alert alert-danger my-2">
+                                    <p>{{ error }}</p>
+                                </div>
+                                {% endfor %} {% endfor %}
+                                <div class="form-group mb-3">
+                                    <div class="d-flex w-100 justify-content-end">
+                                        <button class="btn btn-sm rounded-0 btn-primary col-4">
+                                                Update
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock pageContent %}

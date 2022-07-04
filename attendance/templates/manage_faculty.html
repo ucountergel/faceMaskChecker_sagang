@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    <form action=" " id="faculty-form">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ faculty.id }}">
+        <input type="hidden" name="user_type" value="2">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label for="first_name" class="control-label">First Name</label>
+                    <input type="text" class="form-control rounded-0" name="first_name" id="first_name" value="{{ faculty.user.first_name }}" required="required">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="last_name" class="control-label">Last Name</label>
+                    <input type="text" class="form-control rounded-0" name="last_name" id="last_name" value="{{ faculty.user.last_name }}" required="required">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="gender" class="control-label">Gender</label>
+                    <select name="gender" id="gender" class="form-select rounded-0" required>
+                        {% if faculty.gender == 'Male' %}
+                        <option selected>Male</option>
+                        {% else %}
+                        <option>Male</option>
+                        {% endif %}
+                        
+                        {% if faculty.gender == 'Female' %}
+                        <option selected>Female</option>
+                        {% else %}
+                        <option>Female</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="dob" class="control-label">Birthdate</label>
+                    <input type="date" class="form-control rounded-0" name="dob" id="dob" value="{{ faculty.dob|date:'Y-m-d' }}" required="required">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="contact" class="control-label">Contact</label>
+                    <input type="text" class="form-control rounded-0" name="contact" id="contact" value="{{ faculty.contact }}" required="required">
+                </div>
+                 <div class="form-group mb-3">
+                    <label for="users_types" class="control-label">User Type</label>
+                    <input type="text" class="form-control rounded-0" name="users_types" id="users_types" value="{{ faculty.users_types }}" required="required">
+                 </div>
+                 <div class="form-group mb-3">
+                    <label for="cam" class="control-label">CAM</label>
+                    <input type="text" class="form-control rounded-0" name="cam" id="cam" value="{{ faculty.cam }}" required="required">
+                 </div>
+                  <div class="form-group mb-3">
+                    <label for="Assigned_places" class="control-label">Assigned Places</label>
+                    <input type="text" class="form-control rounded-0" name="Assigned_places" id="Assigned_places" value="{{ faculty.Assigned_places }}" required="required">
+                  </div>
+                <div class="form-group mb-3">
+                    <label for="address" class="control-label">Address</label>
+                    <textarea rows="3" class="form-control rounded-0" name="address" id="address" required="required">{{ faculty.address }}</textarea>
+                </div>
+            </div>
+                <div class="form-group mb-3">
+                    <label for="email" class="control-label">Email</label>
+                    <input type="email" class="form-control rounded-0" name="email" id="email" value="{{ faculty.user.email }}" required="required">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="username" class="control-label">Username</label>
+                    <input type="text" class="form-control rounded-0" name="username" id="username" value="{{ faculty.user.username }}" required="required">
+                </div>
+                {% if not faculty %}
+                <div class="form-group mb-3">
+                    <label for="password1" class="control-label">{% if faculty.id %}New {% endif %}Password</label>
+                    <input type="password" class="form-control rounded-0" name="password1" id="password1" {% if not faculty.id %}required="required" {% endif %}>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password2" class="control-label">Confirm {% if faculty.id %}New {% endif %}Password</label>
+                    <input type="password" class="form-control rounded-0" name="password2" id="password2" {% if not faculty.id %}required="required" {% endif %}>
+                </div>
+                {% endif %}
+                <div class="form-group mb-3">
+                    <label for="avatar" class="control-label">User Avatar</label>
+                    <input type="file" class="form-control rounded-0" name="avatar" id="avatar" onchange="DisplayImage(this)" accept="images/*" {% if not faculty.id %}required="required" {% endif %}>
+                </div>
+                <div class="form-group mb-3 text-center">
+                    <img src="{% if faculty.avatar %}{{ faculty.avatar.url }}{% else %}{{ MEDIA_URL }}default/default-icon.png{% endif %}" class="img-fluid img-thumbnail bg-gradient bg-dark w-100" id="user-avatar-modal" alt="">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    function DisplayImage(input) {
+        console.log(input.files)
+        if (event.target.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = $('#user-avatar-modal');
+                output.attr('src', reader.result)
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    };
+    $(function() {
+        $('#uni_modal').on('shown.bs.modal', function() {
+            $('.select2').select2({
+                placeholder: 'Please Select Here',
+                width: '100%',
+                dropdownParent: $('#uni_modal')
+            })
+        })
+        $('#faculty-form').submit(function(e) {
+            e.preventDefault();
+            var _this = $(this)
+            $('.err-msg').remove();
+            var el = $('<div>')
+            el.addClass("alert alert-danger err-msg")
+            el.hide()
+            if (_this[0].checkValidity() == false) {
+                _this[0].reportValidity();
+                return false;
+            }
+            start_loader();
+            $.ajax({
+                url: "{% url 'save-faculty' %}",
+                data: new FormData($(this)[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                method: 'POST',
+                type: 'POST',
+                dataType: 'json',
+                error: err => {
+                    console.log(err)
+                    alert("An error occured ", 'error');
+                    end_loader();
+                },
+                success: function(resp) {
+                    if (typeof resp == 'object' && resp.status == 'success') {
+                        el.removeClass("alert alert-danger err-msg ")
+                        location.reload()
+                    } else if (resp.status == 'failed' && !!resp.msg) {
+                        el.html(resp.msg)
+                    } else {
+                        el.text("An error occured ", 'error');
+                        end_loader();
+                        console.err(resp)
+                    }
+                    _this.prepend(el)
+                    el.show('slow')
+                    $("html, body, .modal ").scrollTop(0);
+                    end_loader()
+                }
+            })
+        })
+    })
+</script>

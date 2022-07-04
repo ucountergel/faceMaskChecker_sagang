@@ -1,4 +1,4 @@
-# faceMaskChecker_sagang
+# faceMaskChecker_sagang (FMC v2.0)
 Django Security Personnel Face Mask Checker System
 # 
 # Framework: 

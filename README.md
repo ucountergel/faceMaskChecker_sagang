@@ -22,6 +22,8 @@ Django Security Personnel Face Mask Checker System
 @AISWARYAJAYADAS - https://github.com/AISWARYAJAYADAS/facemask
 #
 @sawardekar - https://github.com/sawardekar/Django_VideoStream
+#
+#
 
 Kindly install the needed python libraries found in requirements.txt. (^^)
 

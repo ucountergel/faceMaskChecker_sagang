@@ -18,5 +18,10 @@ Django Security Personnel Face Mask Checker System
 # Architectural Design Pattern: 
   Model-View-Template
 #
+# Credits and inspired projects from:
+@AISWARYAJAYADAS - https://github.com/AISWARYAJAYADAS/facemask
+#
+@sawardekar - https://github.com/sawardekar/Django_VideoStream
 
 Kindly install the needed python libraries found in requirements.txt. (^^)
+

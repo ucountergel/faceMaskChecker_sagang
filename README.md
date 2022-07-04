@@ -1,6 +1,8 @@
 # faceMaskChecker_sagang (FMC v2.0)
 Django Security Personnel Face Mask Checker System
 # 
+# IDE
+  PyCharm Community/Pro
 # Framework: 
   Django 
 #

@@ -11,8 +11,6 @@ Django Security Personnel Face Mask Checker System
   SQLite3
 # Architectural Design Pattern: 
   Model-View-Template
-.
-.
-.
-.
+#
+
 Kindly install the needed python libraries found in requirements.txt. (^^)

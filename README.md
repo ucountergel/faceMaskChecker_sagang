@@ -10,7 +10,7 @@ Django Security Personnel Face Mask Checker System
   HTML, CSS, JavaScript, jQuery 
 #
 # Back-end: 
-  Python 
+  Python (v3.9/3.10)
 #
 # Server/database: 
   SQLite3

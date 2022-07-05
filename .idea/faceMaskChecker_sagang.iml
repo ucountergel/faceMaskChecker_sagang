@@ -13,7 +13,13 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/attendance/static/assets/mdb-blogtemplate/src/js/bootstrap/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/attendance/static/assets/mdb-blogtemplate/src/js/mdb/perfect-scrollbar/lib" />
+      <excludeFolder url="file://$MODULE_DIR$/attendance/static/assets/select2/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/attendance/static/dist" />
+    </content>
     <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

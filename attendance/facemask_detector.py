@@ -147,7 +147,7 @@ class MaskDetect(object):
 
         # global statusLabel
         labels = [line.strip() for line in
-                  open(r"C:/Users/u.counter lhg/PycharmProjects/faceMaskChecker_sagang/class_labels.txt")]
+                  open("class_labels.txt")]
         # Generate random bounding box bounding_box_color for each label
         bounding_box_color = np.random.uniform(0, 255, size=(len(labels), 3))
 
@@ -191,7 +191,7 @@ class MaskDetect(object):
                 color = (255, 0, 0)
                 # Alarm when wearing 'Improper Face Mask'
                 '''winsound.PlaySound(
-                    r'C:/Users/u.counter lhg/PycharmProjects/faceMaskChecker_sagang/attendance/static/assets/alarm/beep.wav',
+                      'attendance/static/assets/alarm/beep.wav',
                     winsound.SND_ASYNC)'''
                 improperCount += 1
                 statusLabel = "Warning-"
@@ -202,7 +202,7 @@ class MaskDetect(object):
                 withoutMaskCount += 1
                 # Alarm when 'Not Wearing Face Mask'
                 winsound.PlaySound(
-                    r'C:/Users/u.counter lhg/PycharmProjects/faceMaskChecker_sagang/attendance/static/assets/alarm/beep.wav',
+                     'attendance/static/assets/alarm/beep.wav',
                     winsound.SND_ASYNC)
                 statusLabel = "Danger-"
 

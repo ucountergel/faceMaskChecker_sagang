@@ -3,7 +3,7 @@ Django Security Personnel Face Mask Checker System
 # 
 # IDE
   PyCharm Community/Pro
-# Framework: 
+# Python Web Framework: 
   Django 
 #
 # Front-end: 

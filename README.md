@@ -23,6 +23,8 @@ Django Security Personnel Face Mask Checker System
 #
 @sawardekar - https://github.com/sawardekar/Django_VideoStream
 #
+@rhtyx - https://github.com/rhtyx/FaceMaskDetection-PeopleCounter
+#
 @sourcecodester - https://bit.ly/sourcecodester_cams
 #
 #

@@ -1,22 +1,17 @@
 # faceMaskChecker_sagang (FMC v2.0)
 Django Security Personnel Face Mask Checker System
 # 
-# IDE
-  PyCharm Community/Pro
-# Python Web Framework: 
-  Django 
+IDE: PyCharm Community/Pro
+# 
+Python Web Framework: Django 
+# 
+Front-end: HTML, CSS, JavaScript, jQuery 
+# 
+Back-end: Python (v3.9/3.10)
 #
-# Front-end: 
-  HTML, CSS, JavaScript, jQuery 
-#
-# Back-end: 
-  Python (v3.9/3.10)
-#
-# Server/database: 
-  SQLite3
-#
-# Architectural Design Pattern: 
-  Model-View-Template
+Server/database: SQLite3
+# 
+Architectural Design Pattern: Model-View-Template
 #
 # Credits and inspired projects from:
 @AISWARYAJAYADAS - https://github.com/AISWARYAJAYADAS/facemask

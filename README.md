@@ -28,5 +28,5 @@ Django Security Personnel Face Mask Checker System
 @sourcecodester - https://bit.ly/sourcecodester_cams
 #
 #
-To run the project, kindly install the needed python libraries found in requirements.txt. (^^)
+To setup the project, kindly install the needed python libraries found in requirements.txt. (^^)
 

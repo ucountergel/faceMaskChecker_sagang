@@ -10,5 +10,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\u.counter lhg\PycharmProjects\faceMaskChecker_sagang\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="db" uuid="0797ac3f-33ab-4afe-bca2-1f9a8b7c8b9f">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\u.counter lhg\Documents\Capstone_Project\faceMaskChecker_sagang\db.sqlite3</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

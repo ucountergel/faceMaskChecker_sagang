@@ -9,7 +9,7 @@ IDE: PyCharm Community/Pro
 # 
 Python Web Framework: Django 
 # 
-Front-end: HTML, CSS, JavaScript, jQuery 
+Front-end: HTML, CSS, JavaScript
 # 
 Back-end: Python (v3.9/3.10)
 #

@@ -16,6 +16,10 @@ Back-end: Python (v3.9/3.10)
 Server/database: SQLite3
 # 
 Architectural Design Pattern: Model-View-Template
+# SDLC
+Agile software development
+# Theory used
+Image Processing
 #
 # Credits and inspired projects from:
 @AISWARYAJAYADAS - https://github.com/AISWARYAJAYADAS/facemask

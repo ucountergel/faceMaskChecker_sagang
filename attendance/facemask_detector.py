@@ -14,18 +14,19 @@ from tensorflow.keras.preprocessing.image import img_to_array
 # from tensorflow.keras.models import load_model
 # from tensorflow.keras.preprocessing.image import img_to_array
 
-'''face_detection_videocam = cv2.CascadeClassifier(os.path.join(
-    settings.BASE_DIR, 'attendance/face_detector_model/opencv_haarcascade_data/haarcascade_frontalface_default.xml'))
-face_detection_webcam = cv2.CascadeClassifier(os.path.join(
-    settings.BASE_DIR, 'attendance/face_detector_model/opencv_haarcascade_data/haarcascade_frontalface_default.xml'))'''
+z = 0
+a = 0
+b = 0
+d = 0
+e = 0
+
 # load our serialized face detector model from disk
 prototxtPath = os.path.sep.join([settings.BASE_DIR, "attendance/face_detector_model/deploy.prototxt"])
 weightsPath = os.path.sep.join(
     [settings.BASE_DIR, "attendance/face_detector_model/res10_300x300_ssd_iter_140000.caffemodel"])
 faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 maskNet = load_model(os.path.join(settings.BASE_DIR, 'attendance/mask_detector_model/maskmodel.h5'))
-network = cv2.dnn.readNetFromCaffe("attendance/ssd/SSD_MobileNet_prototxt.txt",
-                                   "attendance/ssd/SSD_MobileNet.caffemodel")
+network = cv2.dnn.readNetFromCaffe("attendance/ssd/SSD_MobileNet_prototxt.txt", "attendance/ssd/SSD_MobileNet.caffemodel")
 
 
 class VideoCamera(object):
@@ -80,7 +81,7 @@ class IPWebCam(object):
 
 class MaskDetect(object):
     def __init__(self):
-        self.vs = VideoStream(src=0).start()
+        self.video = VideoStream(src=0).start()
 
     # Define the codec and create VideoWriter object
     '''fourcc = cv2.VideoWriter_fourcc(*'XVID')
@@ -151,7 +152,7 @@ class MaskDetect(object):
         # Generate random bounding box bounding_box_color for each label
         bounding_box_color = np.random.uniform(0, 255, size=(len(labels), 3))
 
-        frame = self.vs.read()
+        frame = self.video.read()
         frame = imutils.resize(frame, width=800)
         (h, w) = frame.shape[:2]
 
@@ -161,6 +162,7 @@ class MaskDetect(object):
         (locs, preds) = self.detect_and_predict_mask(frame, faceNet, maskNet)
         network.setInput(blob)
         detections = network.forward()
+
 
         pos_dict = dict()
         coordinates = dict()
@@ -221,10 +223,9 @@ class MaskDetect(object):
         return jpeg.tobytes()
 
 
-
 class MaskDetects(object):
     def __init__(self):
-        self.vs = VideoStream(src=0).stop()
+        self.video = VideoStream(src=0).stop()
 
 
 class LiveWebCam(object):

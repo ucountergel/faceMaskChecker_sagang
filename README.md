@@ -26,7 +26,8 @@ Theory used: Image Processing
 #
 To setup the project, kindly install the needed python libraries found in requirements.txt. (^^)
 # 
-# [Damadtec Members](https://sites.google.com/ctu.edu.ph/bsit-4b-damadtec/home):
+#
+[Damadtec Members](https://sites.google.com/ctu.edu.ph/bsit-4b-damadtec/home):
 [@darren ](https://github.com/fightmezxx), @aprilkim, @maribel, [@angel](https://github.com/amnesiagel5)
 #
 

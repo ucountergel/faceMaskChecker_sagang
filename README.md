@@ -25,7 +25,7 @@ Theory used: Image Processing
 [@AISWARYAJAYADAS](https://github.com/AISWARYAJAYADAS/facemask), [@sawardekar](https://github.com/sawardekar/Django_VideoStream), [@rhtyx](https://github.com/rhtyx/FaceMaskDetection-PeopleCounter), and [@sourcecodester](https://bit.ly/sourcecodester_cams)
 #
 # 
-[Damadtec Members](https://sites.google.com/ctu.edu.ph/bsit-4b-damadtec/home): [@Darren ](https://github.com/fightmezxx), @AprilKim, @Maribel, [@Angel](https://github.com/amnesiagel5)
+[Damadtec Members](https://sites.google.com/ctu.edu.ph/bsit-4b-damadtec/home) ~ [@darren ](https://github.com/fightmezxx), @aprilkim, @maribel, [@angel](https://github.com/amnesiagel5)
 #
 To setup the project, kindly install the needed python libraries found in requirements.txt. (^^)
 

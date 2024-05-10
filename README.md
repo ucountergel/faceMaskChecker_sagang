@@ -19,7 +19,7 @@ Architectural Design Pattern: Model-View-Template
 #
 SDLC: Agile software development
 # 
-Theory used: Image Processing
+Theory used: Image Processing and Artificial Intelligence (AI)
 #
 # Credits and inspired projects from:
 [@AISWARYAJAYADAS](https://github.com/AISWARYAJAYADAS/facemask), [@sawardekar](https://github.com/sawardekar/Django_VideoStream), [@rhtyx](https://github.com/rhtyx/FaceMaskDetection-PeopleCounter), and [@sourcecodester](https://bit.ly/sourcecodester_cams)

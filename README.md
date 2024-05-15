@@ -1,5 +1,5 @@
 # faceMaskChecker_sagang (FMC v2.0)
-Django Security Personnel Face Mask Checker System
+Django Security Personnel Face Mask Checker System (Web Application)
 # Little trivia! 
 Sagang is a Cebuano word which means 'shield' which symbolizes the face mask that protects us from viruses. :)
 #

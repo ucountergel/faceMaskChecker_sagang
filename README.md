@@ -28,7 +28,7 @@ To setup the project, kindly install the needed python libraries found in requir
 # 
 # -----------------------------------------
 Damadtec Members ~
-[@darren ](https://github.com/fightmezxx), @aprilkim, @maribel, [@angel](https://github.com/amnesiagel5)
+[@darren ](https://github.com/fightmezxx), @aprilkim, @maribel, [@angel](https://github.com/ucountergel)
 #
 
 
